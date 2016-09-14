@@ -2,9 +2,8 @@ package appewtc.masterung.tukwebview;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -12,14 +11,35 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    //Explicit
+    private WebView webView;
+    private String[] urlStrings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        webView = (WebView) findViewById(R.id.webView);
+
+        //Setup Constant URL
+        urlStrings = new String[4];
+        urlStrings[0] = "http://androidthai.in.th/home.html";
+        urlStrings[1] = "http://androidthai.in.th/conternt-android.html";
+        urlStrings[2] = "http://androidthai.in.th/java-intro.html";
+        urlStrings[3] = "http://androidthai.in.th/developer.html";
+
+        showWebView(urlStrings[0]);
+
+
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -40,7 +60,18 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-    }
+
+    }   // Main Method
+
+    private void showWebView(String urlString) {
+
+        WebViewClient webViewClient = new WebViewClient();
+        webView.setWebViewClient(webViewClient);
+        webView.loadUrl(urlString);
+        webView.getSettings().setJavaScriptEnabled(true);
+
+
+    }   // showWebView
 
     @Override
     public void onBackPressed() {
@@ -80,12 +111,12 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
+        if (id == R.id.WebView1) {
+            showWebView(urlStrings[1]);
+        } else if (id == R.id.WebView2) {
+            showWebView(urlStrings[2]);
+        } else if (id == R.id.WebView3) {
+            showWebView(urlStrings[3]);
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

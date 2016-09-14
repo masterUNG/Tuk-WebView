@@ -3,17 +3,17 @@
 
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/WebView1"
             android:icon="@drawable/ic_menu_camera"
-            android:title="Import" />
+            android:title="WebView1" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/WebView2"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
+            android:title="WebView2" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/WebView3"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="WebView3" />
 
     </group>
 
